@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     #External Package
     'rest_framework',
     #Local Apps
+    'main.product',
 
 ]
 
