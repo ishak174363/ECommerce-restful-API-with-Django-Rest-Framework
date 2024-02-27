@@ -8,9 +8,10 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY =os.getenv('SECRET_KEY')
-
 #DEBUG = False
 DEBUG=True
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -22,6 +23,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #External Package
     'rest_framework',
+    'mptt',
+    'drf_spectacular',
     #Local Apps
     'main.product',
 
@@ -100,4 +103,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-REST_FRAMEWORK = {}
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Django DRF Ecommerce API",
+}
