@@ -6,6 +6,7 @@ from .serializers import BrandSerializer, CategorySerializer, ProductSerializer
 from drf_spectacular.utils import extend_schema
 # Create your views here.
 
+
 #Create Category Viewset
 class CategoryViewSet(viewsets.ViewSet):
     queryset = Category.objects.all()
@@ -16,3 +17,21 @@ class CategoryViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
 
+#Create Brand Viewset
+class BrandViewSet(viewsets.ViewSet):
+    queryset = Brand.objects.all()
+    
+    @extend_schema(responses=BrandSerializer)
+    def list(self, request):
+        serializer = BrandSerializer(self.queryset, many=True)
+        return Response(serializer.data)
+
+
+#Create Product Viewset
+class ProductViewSet(viewsets.ViewSet):
+    queryset = Product.objects.all()
+    
+    @extend_schema(responses=ProductSerializer)
+    def list(self, request):
+        serializer = ProductSerializer(self.queryset, many=True)
+        return Response(serializer.data)
