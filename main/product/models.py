@@ -3,7 +3,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 
 # Create your models here.
-
+#Category model created here
 class Category(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=250, unique=True)
@@ -17,12 +17,15 @@ class Category(models.Model):
         return self.name
 
 
+#Brand model created here
 class Brand(models.Model):
     name = models.CharField(max_length=100)
+
     def __str__(self):
         return self.name
     
     
+#Product model created here
 class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
